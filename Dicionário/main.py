@@ -39,6 +39,7 @@ def ex2():
         print("Ator: ", valor["Ator"])
 
 def ex3():
+
     def situacaoRa(ver_ra):
         dicionario = {8025: "Ativo", 8021: "Ativo", 8022: "Inativo", 8036: "Ativo"}
         return dicionario.get(ver_ra, "RA não encontrado")
@@ -46,10 +47,38 @@ def ex3():
     ra = int(input("Digite o RA que deseja pesquisar: "))
     print(situacaoRa(ra))
 
+def ex4():
+    mouse = []
+    def verifyCode(code):
+        if len(mouse) > 0:
+            exist = [x for x in mouse if x["code"] == code]
+            if exist:
+                return exist[0]
+        return
+    def mouseRegister():
+        while True:
+            code = int(input("Digte o código do mouse: "))
+            if code == 0:
+                break
+            elif code != 0:
+                if verifyCode(code):
+                    print("Código já cadastrado!")
+                else:
+                    print("Opção 1 - Necessita da Esfera")
+                    print("Opção 2 - Necessita de Limpeza ")
+                    print("Opção 3 - Necessita de troca de cabo ou conector")
+                    print("Opção 4 - Quebrado ou inutilizado")
+                    defeito = int(input("Selecione o defeito, apenas numero da opção: "))
+                    while defeito < 0 or defeito > 4:
+                        print("Opção inválida!")
+                        defeito = int(input("Digite uma opção válida: "))
+                    mouse.append({"code": code, "defeito": defeito})
+                    print("*--Próximo Mouse--*")
+    mouseRegister()
+
 def menu():
     print("*--Exercicios aula 17--*")
     return int(input("Qual opção desejada: "))
-    
 while True:
     op = menu()
     while op < 1 or op > 5:
@@ -62,6 +91,6 @@ while True:
     elif op == 3: 
         ex3()
     elif op == 4:
-        print("Exercicio 4 ainda nao postado!")
+        ex4()
     elif  op == 5:
         break
