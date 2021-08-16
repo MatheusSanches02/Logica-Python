@@ -104,9 +104,10 @@ def menu():
     print("1 - Exercicio 1")
     print("2 - Exercicio 2")
     print("3 - Exercicio 3")
-    print("4 - Exercicio 5")
+    print("4 - Exercicio 4")
     print("5 - Finalizar Programa")
     return int(input("Qual opção desejada: "))
+
 while True:
     op = menu()
     while op < 1 or op > 5:
