@@ -50,7 +50,7 @@ def ex3():
 def ex4():
     
     mouse = []
-    def verifyCode(code):
+    def verifyCode(code): #verifica se o código ja foi cadastrado
         if len(mouse) > 0:
             exist = [x for x in mouse if x["code"] == code]
             if exist:
@@ -62,22 +62,22 @@ def ex4():
         necessitaCaboConector = 0
         quebradoInutilizado = 0
         while True:
-            code = int(input("Digte o código do mouse: "))
-            if code == 0:
+            code = int(input("Digte o código do mouse: ")) #solicita o código para registro
+            if code == 0: #verifica se o código é zero, se sim, sair do programa
                 break
             elif code != 0:
-                if verifyCode(code):
+                if verifyCode(code): #chama a função para verificar se o código ja ta cadastrado
                     print("Código já cadastrado!")
                 else:
-                    print("Opção 1 - Necessita da Esfera")
+                    print("Opção 1 - Necessita da Esfera") # menu de defeitos
                     print("Opção 2 - Necessita de Limpeza ")
                     print("Opção 3 - Necessita de troca de cabo ou conector")
                     print("Opção 4 - Quebrado ou inutilizado")
-                    defeito = int(input("Selecione o defeito, apenas numero da opção: "))
-                    while defeito < 0 or defeito > 4:
+                    defeito = int(input("Selecione o defeito, apenas numero da opção: ")) #pede a opção do defeito ao usuario
+                    while defeito < 0 or defeito > 4: #válida se a opção digitada existe no menu  
                         print("Opção inválida!")
                         defeito = int(input("Digite uma opção válida: "))
-                    if defeito == 1:
+                    if defeito == 1: #verifica qual é o defeito e conta no contador do defeito 
                         necessitaEsfera = necessitaEsfera + 1
                     elif defeito == 2:
                         necessitaLimpeza = necessitaLimpeza + 1
@@ -85,13 +85,14 @@ def ex4():
                         necessitaCaboConector = necessitaCaboConector + 1
                     else: 
                         quebradoInutilizado = quebradoInutilizado + 1
-                    mouse.append({"code": code, "defeito": defeito})
+                    mouse.append({"code": code, "defeito": defeito}) #salva o código do mouse e do defeito em uma lista de dicionário
                     print("*--Próximo Mouse--*")
-                percentual1 = (necessitaEsfera / len(mouse)) * 100
+                percentual1 = (necessitaEsfera / len(mouse)) * 100 #calcula quantos % o defeito representa do total
                 percentual2 = (necessitaLimpeza / len(mouse)) * 100
                 percentual3 = (necessitaCaboConector / len(mouse)) * 100
                 percentual4 = (quebradoInutilizado / len(mouse)) * 100
-                print(f'Quantidade de mouses: {len(mouse)}')
+                print(f'Quantidade de mouses: {len(mouse)}') #imprime a quantidade de mouses cadastrados 
+        # imprime o final do programa
         print("Situação:                                  Quantidade          Percentual")
         print(f'Necessita de esfera:                             {necessitaEsfera}               {percentual1}%')
         print(f'Necessita de limpeza:                            {necessitaLimpeza}              {percentual2}%')
